@@ -1,0 +1,49 @@
+#File name: main_menu
+#Author: James Haley
+#Date: 3/16/2010
+#Purpose: to Learn Shell Scripting
+
+clear
+
+loop=y
+col=20
+filename=datafile
+
+while [ "$loop" = "y" ]
+
+do
+   clear
+   tput cup 3 $col; echo "Career Information List"
+   tput cup 4 $col; echo "======================="
+   tput cup 5 $col; echo "A - Add New Records"
+   tput cup 6 $col; echo "V - View List"
+   tput cup 7 $col; echo "E - Edit List"
+   tput cup 8 $col; echo "S - Search"
+   tput cup 9 $col; echo "Q - Quit"
+   tput cup 11 $col; echo "Selection :"
+   
+
+   let col2=col+12
+   tput cup 11 $col2
+   read choice 
+
+
+if [ "$choice" = "q" ]
+   then
+   choice="Q"
+fi
+
+if [ "$choice" = "Q" ]
+   then
+   exit
+fi
+
+case $choice in
+  [Aa]) ./add_rec ;;
+  [Vv]) clear; more $filename | tr ":" " " ; read ;;
+  [Ee]) vi $filename ;;
+  [Ss]) clear; echo "Enter your search criteria: "; read searchcriteria; grep -i $searchcriteria $filename | tr ":" " "; read ;;
+  *) tput cup 14 $col; echo "Invalid entry - Press any key to continue"; read ;;
+esac
+
+done

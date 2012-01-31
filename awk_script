@@ -1,0 +1,11 @@
+# File name: awk_script
+# Author: James Haley
+# Date: 2/23/2010
+# Purpose: To learn how to use file Processing
+
+BEGIN {
+     {FS = ":"}
+     {print "\t\t\t job applications\n"}
+     {printf "%-40s%-12s%-12s%-5s\n", "Employer", "Abbrev", "Interview", "Accepted"}
+     }
+     {printf "%-40s%-12s%-12s%-5s\n", $1, $2, $3, $4}

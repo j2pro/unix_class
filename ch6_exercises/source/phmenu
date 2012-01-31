@@ -1,0 +1,29 @@
+#Script Name:   phmenu
+#by:            jch
+#date:          3-23-2010
+#purpose:       menu for corporate Phone list
+#Command Line:  phmenu
+#=============================================
+
+phonefile=~/source/corp_phones
+
+loop=y
+while [ "$loop" = y ]
+do
+ clear
+ tput cup 3 12; echo "Corporate Phone Reporting Menu"
+ tput cup 4 12; echo "=============================="
+ tput cup 6 9; echo "P - Print Phone List"
+ tput cup 7 9; echo "A - Add New Phones"
+ tput cup 8 9; echo "S - Search for Phones"
+ tput cup 10 9; echo "Q - Quit: "
+ tput cup 10 19;
+ read choice || continue
+  case $choice in
+    [Aa]) ./phoneadd ;;
+    [Pp]) ./phlist1 ;;
+    [Ss]) ./phonefind ;;
+    [Qq]) exit ;;
+    *) tput cup 14 4; echo "Invalid Code"; read choice ;;
+  esac
+done

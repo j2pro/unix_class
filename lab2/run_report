@@ -1,0 +1,11 @@
+# File name: run_report
+# Author: James Haley
+# Date: 2/23/2010
+# Purpose: To learn how to use file processing
+
+join -1 1 -2 1 -o '1.2 2.2 2.3 2.4' -t: Employer Applications > report
+sort report > new_report
+awk -f awk_script new_report > job_report1
+sed -f sed_script job_report1 > job_report
+clear
+cat job_report

@@ -1,0 +1,7 @@
+# File name: sed_script 
+# Author: James Haley
+# Date: 2/23/2010
+# Purpose: To Get Extra credit!
+
+s/job/Job/
+s/applications/Applications/

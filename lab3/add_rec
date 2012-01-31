@@ -1,0 +1,43 @@
+#File name: add_rec
+#Author: James Haley
+#Date: 3/23/2010
+#Purpose: learn shell scripting
+
+careerfile=datafile
+looptest=y
+col=4
+col2=18
+
+while [ $looptest = "y" ]
+do
+   clear
+   tput cup 1 $col; echo "Career Information List Additions"
+   tput cup 2 $col; echo "================================="
+   tput cup 3 $col; echo "First Name"
+   tput cup 4 $col; echo "Last Name"
+   tput cup 5 $col; echo "Phone"
+   tput cup 6 $col; echo "Title"
+   tput cup 7 $col; echo "Degree"
+   tput cup 9 $col; echo "Add Another? y for yes or q for quit: "
+   tput cup 3 $col2; read fname
+   
+   if [ "$fname" = "q" ]
+    then
+      clear; exit
+   fi
+
+   tput cup 4 $col2; read lname
+   tput cup 5 $col2; read phoneno 
+   tput cup 6 $col2; read jobtitle
+   tput cup 7 $col2; read degree
+
+   if [ "$lname" > "  " ]
+   then
+   echo "$phoneno:$fname:$lname:$jobtitle:$degree" >> $careerfile
+   fi
+   tput cup 10 $col2; read looptest
+   if [ "$looptest" = "q" ]
+    then
+      clear; exit
+   fi
+done
